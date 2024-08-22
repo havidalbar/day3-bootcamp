@@ -33,4 +33,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         await _context.SaveChangesAsync();
         return model;
     }
+
+    public async Task Update(T model)
+    {
+        _context.Set<T>().Update(model);
+        await _context.SaveChangesAsync();
+    }
+
 }

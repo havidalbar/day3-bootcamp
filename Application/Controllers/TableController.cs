@@ -2,6 +2,7 @@ using Core.Features.Queries.PostTableSpecifications;
 using Core.Features.Queries.GetTableSpecifications;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Core.Features.Queries.PutTableSpecifications;
 
 namespace Application.Controllers;
 
@@ -36,6 +37,17 @@ public class TableController : BaseController
     public async Task<IActionResult> ListTableSpecifications(GetListTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
+        return Ok(response);
+    }
+
+    [HttpPut("v1/table/specification/")]
+    public async Task<IActionResult> ListTableSpecifications(PutTableSpecificationsQuery request)
+    {
+        var response = await _mediator.Send(request);
+        if (response is null)
+        {
+            return NotFound("data meja tidak ada");
+        }
         return Ok(response);
     }
 }

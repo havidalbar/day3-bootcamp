@@ -18,10 +18,12 @@
       <Folder Include="Features\Queries\" />
       <Folder Include="Features\Queries\PostTableSpecifications\" />
       <Folder Include="Features\Queries\GetListTableSpecifications\" />
+      <Folder Include="Features\Queries\PutTableSpecifications\" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Features\Queries\PostTableSpecifications\" />
       <None Remove="Features\Queries\GetListTableSpecifications\" />
+      <None Remove="Features\Queries\PutTableSpecifications\" />
     </ItemGroup>
 </Project>
