@@ -20,6 +20,7 @@
       <Folder Include="Features\Queries\GetListTableSpecifications\" />
       <Folder Include="Features\Queries\PutTableSpecifications\" />
       <Folder Include="Features\Queries\DeleteTableSpecifications\" />
+      <Folder Include="Features\Queries\PostListSpecifications\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -27,5 +28,6 @@
       <None Remove="Features\Queries\GetListTableSpecifications\" />
       <None Remove="Features\Queries\PutTableSpecifications\" />
       <None Remove="Features\Queries\DeleteTableSpecifications\" />
+      <None Remove="Features\Queries\PostListSpecifications\" />
     </ItemGroup>
 </Project>

@@ -46,4 +46,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         await _context.SaveChangesAsync();
     }
 
+    public async Task<List<T>> CreateBatch(List<T> models)
+    {
+        await _context.Set<T>().AddRangeAsync(models);
+        await _context.SaveChangesAsync();
+        return models;
+    }
+
 }

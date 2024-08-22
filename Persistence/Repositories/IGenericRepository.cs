@@ -8,5 +8,5 @@ public interface IGenericRepository<T> where T : class
     Task<T> Create(T model);
     Task Update(T model);
     Task Delete(T model);
-
+    Task<List<T>> CreateBatch(List<T> model);
 }
