@@ -34,4 +34,11 @@ public class TableController : BaseController
         var response = await _mediator.Send(request);
         return response;
     }
+
+    [HttpGet("v1/table/specification/")]
+    public async Task<IActionResult> ListTableSpecifications(GetListTableSpecificationsQuery request)
+    {
+        var response = await _mediator.Send(request);
+        return Ok(response);
+    }
 }

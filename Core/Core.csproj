@@ -17,9 +17,11 @@
     <ItemGroup>
       <Folder Include="Features\Queries\" />
       <Folder Include="Features\Queries\PostTableSpesifications\" />
+      <Folder Include="Features\Queries\GetListTableSpesifications\" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Features\Queries\PostTableSpesifications\" />
+      <None Remove="Features\Queries\GetListTableSpesifications\" />
     </ItemGroup>
 </Project>
