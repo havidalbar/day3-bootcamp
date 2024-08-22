@@ -1,10 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using MediatR;
 
-namespace Core.Features.Queries.PostTableSpesifications
+namespace Core.Features.Queries.PostTableSpecifications
 {
-	public class PostTableSpesificationsQuery : IRequest<PostTableSpesificationsResponse>
+	public class PostTableSpecificationsQuery : IRequest<PostTableSpecificationsResponse>
     {
         public int TableNumber { get; set; }
         public int ChairNumber { get; set; }

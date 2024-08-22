@@ -16,12 +16,12 @@
 
     <ItemGroup>
       <Folder Include="Features\Queries\" />
-      <Folder Include="Features\Queries\PostTableSpesifications\" />
-      <Folder Include="Features\Queries\GetListTableSpesifications\" />
+      <Folder Include="Features\Queries\PostTableSpecifications\" />
+      <Folder Include="Features\Queries\GetListTableSpecifications\" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Features\Queries\PostTableSpesifications\" />
-      <None Remove="Features\Queries\GetListTableSpesifications\" />
+      <None Remove="Features\Queries\PostTableSpecifications\" />
+      <None Remove="Features\Queries\GetListTableSpecifications\" />
     </ItemGroup>
 </Project>

@@ -1,21 +1,20 @@
 ﻿using System;
-using Core.Features.Queries.GetTableSpecifications;
 using MediatR;
 using Persistence.Models;
 using Persistence.Repositories;
 
-namespace Core.Features.Queries.PostTableSpesifications
+namespace Core.Features.Queries.PostTableSpecifications
 {
-	public class PostTableSpesificationsHandler : IRequestHandler<PostTableSpesificationsQuery, PostTableSpesificationsResponse>
+	public class PostTableSpecificationsHandler : IRequestHandler<PostTableSpecificationsQuery, PostTableSpecificationsResponse>
 {
     private readonly ITableSpecificationRepository _tableSpecificationRepository;
 
-    public PostTableSpesificationsHandler(ITableSpecificationRepository tableSpecificationRepository)
+    public PostTableSpecificationsHandler(ITableSpecificationRepository tableSpecificationRepository)
     {
         _tableSpecificationRepository = tableSpecificationRepository;
     }
 
-    public async Task<PostTableSpesificationsResponse> Handle(PostTableSpesificationsQuery query, CancellationToken cancellationToken)
+    public async Task<PostTableSpecificationsResponse> Handle(PostTableSpecificationsQuery query, CancellationToken cancellationToken)
     {
         var newTable = new TableSpecification()
         {
@@ -28,7 +27,7 @@ namespace Core.Features.Queries.PostTableSpesifications
 
         var table = await _tableSpecificationRepository.Create(newTable);
 
-        var response = new PostTableSpesificationsResponse()
+        var response = new PostTableSpecificationsResponse()
         {
             TableId = table.TableId,
             ChairNumber = table.ChairNumber,

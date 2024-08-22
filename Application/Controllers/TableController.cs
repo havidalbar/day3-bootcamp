@@ -1,10 +1,7 @@
-using Core.Features.Queries.PostTableSpesifications;
+using Core.Features.Queries.PostTableSpecifications;
 using Core.Features.Queries.GetTableSpecifications;
 using MediatR;
-using Persistence.DatabaseContext;
-using Persistence.Models;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Repositories;
 
 namespace Application.Controllers;
 
@@ -29,7 +26,7 @@ public class TableController : BaseController
     }
 
     [HttpPost("v1/table/specification/")]
-    public async Task<PostTableSpesificationsResponse> PostTableSpecifications(PostTableSpesificationsQuery request)
+    public async Task<PostTableSpecificationsResponse> PostTableSpecifications(PostTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
         return response;

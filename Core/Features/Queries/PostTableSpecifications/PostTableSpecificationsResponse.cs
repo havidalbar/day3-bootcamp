@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Core.Features.Queries.PostTableSpesifications
+namespace Core.Features.Queries.PostTableSpecifications
 {
-	public class PostTableSpesificationsResponse
+	public class PostTableSpecificationsResponse
 	{
         public Guid TableId { get; set; }
         public int TableNumber { get; set; }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Persistence.Models;
 
-[Table("tablespesification")]
+[Table("tablespecification")]
 public class TableSpecification
 {
     [Key]
