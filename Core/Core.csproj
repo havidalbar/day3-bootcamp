@@ -16,6 +16,10 @@
 
     <ItemGroup>
       <Folder Include="Features\Queries\" />
+      <Folder Include="Features\Queries\PostTableSpesifications\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Features\Queries\PostTableSpesifications\" />
+    </ItemGroup>
 </Project>

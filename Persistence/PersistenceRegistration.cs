@@ -9,7 +9,7 @@ public static class PersistenceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
-        const string dbConnection = "server=localhost;port=8889;pooling=true;user=root;password=root;database=learn;sslMode=Preferred";
+        const string dbConnection = "server=127.0.0.1;port=8889;pooling=true;user=root;password=root;database=learn;sslMode=Preferred";
 
         services.AddDbContext<TableContext>(opt => opt.UseMySql(dbConnection, ServerVersion.AutoDetect(dbConnection)));
         services.AddScoped<ITableSpecificationRepository, TableSpecificationRepository>();

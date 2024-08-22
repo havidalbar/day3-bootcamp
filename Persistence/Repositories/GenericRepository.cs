@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Persistence.DatabaseContext;
 
 namespace Persistence.Repositories;
@@ -24,5 +25,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public void Remove(T itemToRemove)
     {
         _context.Set<T>().Remove(itemToRemove);
+    }
+
+    public async Task<T> Create(T model)
+    {
+        await _context.Set<T>().AddAsync(model);
+        await _context.SaveChangesAsync();
+        return model;
     }
 }
