@@ -14,7 +14,7 @@ public class GetTableSpecificationsHandler : IRequestHandler<GetTableSpecificati
 
     public async Task<GetTableSpecificationsResponse> Handle(GetTableSpecificationsQuery query, CancellationToken cancellationToken)
     {
-        var tableSpecification = _tableSpecificationRepository.GetById(query.TableSpecificationId);
+        var tableSpecification = _tableSpecificationRepository.GetById(query.TableId);
         
         if (tableSpecification is null)
             return new GetTableSpecificationsResponse();

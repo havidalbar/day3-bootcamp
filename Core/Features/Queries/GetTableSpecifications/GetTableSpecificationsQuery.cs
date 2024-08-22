@@ -1,8 +1,9 @@
+using Core.Features.Queries.DeleteTableSpecifications;
 using MediatR;
 
 namespace Core.Features.Queries.GetTableSpecifications;
 
-public class GetTableSpecificationsQuery : IRequest<GetTableSpecificationsResponse>
+public class DeleteTableSpecificationsQuery : IRequest<DeleteTableSpecificationsResponse>
 {
-    public Guid TableSpecificationId { get; set; }
+    public Guid TableId { get; set; }
 }

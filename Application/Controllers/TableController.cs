@@ -20,7 +20,7 @@ public class TableController : BaseController
     {
         var request = new GetTableSpecificationsQuery()
         {
-            TableSpecificationId = id
+            TableId = id
         };
         var response = await _mediator.Send(request);
         return response;
@@ -49,5 +49,16 @@ public class TableController : BaseController
             return NotFound("data meja tidak ada");
         }
         return Ok(response);
+    }
+
+    [HttpDelete("v1/table/specification/{id}")]
+    public async Task<IActionResult> DeleteTableSpecifications(DeleteTableSpecificationsQuery request)
+    {
+        var response = await _mediator.Send(request);
+        if (response is null)
+        {
+            return NotFound("data meja tidak ada");
+        }
+        return Ok(response.Status);
     }
 }
