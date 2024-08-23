@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.DatabaseContext;
+using Persistence.Redis;
 using Persistence.Repositories;
 
 namespace Persistence;
@@ -14,6 +15,13 @@ public static class PersistenceRegistration
         services.AddDbContext<TableContext>(opt => opt.UseMySql(dbConnection, ServerVersion.AutoDetect(dbConnection)));
         services.AddScoped<ITableSpecificationRepository, TableSpecificationRepository>();
 
+        return services;
+    }
+
+    public static IServiceCollection AddRedisServices(this IServiceCollection services)
+    {
+        services.AddSingleton<RedisServer>();
+        services.AddSingleton<ICacheService, RedisCacheService>();
         return services;
     }
 }

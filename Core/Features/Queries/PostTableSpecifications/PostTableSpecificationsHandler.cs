@@ -1,43 +1,54 @@
 ﻿using System;
 using MediatR;
 using Persistence.Models;
+using Persistence.Redis;
 using Persistence.Repositories;
 
 namespace Core.Features.Queries.PostTableSpecifications
 {
 	public class PostTableSpecificationsHandler : IRequestHandler<PostTableSpecificationsQuery, PostTableSpecificationsResponse>
 {
-    private readonly ITableSpecificationRepository _tableSpecificationRepository;
+        private readonly ITableSpecificationRepository _tableSpecificationRepository;
+        private readonly ICacheService _cacheService;
 
-    public PostTableSpecificationsHandler(ITableSpecificationRepository tableSpecificationRepository)
-    {
-        _tableSpecificationRepository = tableSpecificationRepository;
-    }
 
-    public async Task<PostTableSpecificationsResponse> Handle(PostTableSpecificationsQuery query, CancellationToken cancellationToken)
-    {
-        var newTable = new TableSpecification()
+        public PostTableSpecificationsHandler(ITableSpecificationRepository tableSpecificationRepository, ICacheService cacheService)
         {
-         TableId = Guid.NewGuid(),
-         TableNumber = query.TableNumber,
-         ChairNumber = query.ChairNumber,
-         TablePic = query.TablePic,
-         TableType = query.TableType
-        };
+            _tableSpecificationRepository = tableSpecificationRepository;
+            _cacheService = cacheService;
+        }
 
-        var table = await _tableSpecificationRepository.Create(newTable);
-
-        var response = new PostTableSpecificationsResponse()
+        public async Task<PostTableSpecificationsResponse> Handle(PostTableSpecificationsQuery query, CancellationToken cancellationToken)
         {
-            TableId = table.TableId,
-            ChairNumber = table.ChairNumber,
-            TableNumber = table.TableNumber,
-            TablePic = table.TablePic,
-            TableType = table.TableType
-        };
+            var newTable = new TableSpecification()
+            {
+             TableId = Guid.NewGuid(),
+             TableNumber = query.TableNumber,
+             ChairNumber = query.ChairNumber,
+             TablePic = query.TablePic,
+             TableType = query.TableType
+            };
 
-        return response;
-    }
+            var table = await _tableSpecificationRepository.Create(newTable);
+
+            if (_cacheService.CheckActive())
+            {
+               List<TableSpecification> specifications = _tableSpecificationRepository.GetAll();
+               _cacheService.Remove("tableSpecifications");
+               _cacheService.Add("tableSpecifications", specifications);
+            }
+
+            var response = new PostTableSpecificationsResponse()
+            {
+                TableId = table.TableId,
+                ChairNumber = table.ChairNumber,
+                TableNumber = table.TableNumber,
+                TablePic = table.TablePic,
+                TableType = table.TableType
+            };
+
+            return response;
+        }
 }
 }
 
