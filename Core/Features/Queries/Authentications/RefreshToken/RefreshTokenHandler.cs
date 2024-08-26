@@ -47,8 +47,16 @@ namespace Core.Features.Queries.Authentications.RefreshToken
             }
 
             // Mapper user to dto
-            PostLoginResponse userDTO = _mapper.Map<PostLoginResponse>(user);
-
+            PostLoginResponse userDTO = new PostLoginResponse
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+            List<RoleLoginResponse> roleResponse = user.Roles
+            .Select(r => new RoleLoginResponse(r.Name))
+            .ToList();
+            userDTO.Roles = roleResponse;
+            userDTO.RefreshToken = user.RefreshToken;
             return new Response("Token Refreshed", 200, userDTO);
         }
     }
