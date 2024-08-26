@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Persistence.EntitiesConfiguration;
 using Persistence.Models;
 
 namespace Persistence.DatabaseContext;
@@ -20,6 +21,9 @@ public class TableContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new RoleConfiguration());
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
     }
 }

@@ -11,6 +11,9 @@ namespace Persistence.Models
         public List<Role> Roles { get; set; } = new();
         public Guid RefreshToken { get; set; } = Guid.NewGuid();
 
+        public User()
+        { }
+
         public User(string email, string password)
         {
             Email = email;

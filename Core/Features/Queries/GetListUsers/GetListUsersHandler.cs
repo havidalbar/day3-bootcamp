@@ -18,9 +18,9 @@ namespace Core.Features.Queries.GetListUsers
 
         public async Task<Object> Handle(GetListUsersQuery query, CancellationToken cancellationToken)
         {
-            List<User> users = _userRepository.GetAll();
+            List<User> users = await _userRepository.GetUsersWithRolesAsync();
             if (users is null)
-                return new List<User> ();
+                return new List<User>();
             return users;
 
         }

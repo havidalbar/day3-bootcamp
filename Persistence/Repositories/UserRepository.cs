@@ -33,6 +33,19 @@ namespace Persistence.Repositories
                         .Include(x => x.Roles)
                         .FirstOrDefaultAsync(x => x.RefreshToken == refreshToken, cancellationToken: cancellationToken);
         }
+
+        public Task<List<User>> GetUsersWithRolesAsync()
+        {
+            return _context.Users
+                .Include(u => u.Roles)
+                .Select(u => new User
+                {
+                    Id = u.Id,
+                    Email = u.Email,
+                    Roles = u.Roles.Select(r => new Role(r.Name)).ToList()
+                })
+                .ToListAsync();
+        }
     }
 }
 
