@@ -7,7 +7,7 @@ using Persistence.Repositories;
 namespace Core.Features.Queries.PostTableSpecifications
 {
 	public class PostTableSpecificationsHandler : IRequestHandler<PostTableSpecificationsQuery, PostTableSpecificationsResponse>
-{
+    {
         private readonly ITableSpecificationRepository _tableSpecificationRepository;
         private readonly ICacheService _cacheService;
 
@@ -49,6 +49,6 @@ namespace Core.Features.Queries.PostTableSpecifications
 
             return response;
         }
-}
+    }
 }
 

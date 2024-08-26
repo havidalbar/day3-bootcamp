@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Core.Features.Queries.PutTableSpecifications;
 using Core.Features.Queries.PostListSpecifications;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Application.Controllers;
 
@@ -17,6 +18,7 @@ public class TableController : BaseController
     }
     
     [HttpGet("v1/table/specification/{id}")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<GetTableSpecificationsResponse> GetTableSpecifications(Guid id)
     {
         var request = new GetTableSpecificationsQuery()
@@ -28,6 +30,7 @@ public class TableController : BaseController
     }
 
     [HttpPost("v1/table/specification/")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<PostTableSpecificationsResponse> PostTableSpecifications(PostTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
@@ -35,6 +38,7 @@ public class TableController : BaseController
     }
 
     [HttpGet("v1/table/specification/")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<IActionResult> ListTableSpecifications(GetListTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
@@ -42,6 +46,7 @@ public class TableController : BaseController
     }
 
     [HttpPut("v1/table/specification/")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<IActionResult> ListTableSpecifications(PutTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
@@ -53,6 +58,7 @@ public class TableController : BaseController
     }
 
     [HttpDelete("v1/table/specification/{id}")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<IActionResult> DeleteTableSpecifications(DeleteTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
@@ -64,6 +70,7 @@ public class TableController : BaseController
     }
 
     [HttpPost("v1/table/specification/all")]
+    [Authorize(Roles = "USER,ADMIN")]
     public async Task<IActionResult> PostTableSpecifications(PostListTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);

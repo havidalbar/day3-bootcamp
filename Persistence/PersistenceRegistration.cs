@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Persistence.Authentication;
 using Persistence.DatabaseContext;
 using Persistence.Redis;
 using Persistence.Repositories;
@@ -14,7 +15,8 @@ public static class PersistenceRegistration
 
         services.AddDbContext<TableContext>(opt => opt.UseMySql(dbConnection, ServerVersion.AutoDetect(dbConnection)));
         services.AddScoped<ITableSpecificationRepository, TableSpecificationRepository>();
-
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
         return services;
     }
 
@@ -22,6 +24,12 @@ public static class PersistenceRegistration
     {
         services.AddSingleton<RedisServer>();
         services.AddSingleton<ICacheService, RedisCacheService>();
+        return services;
+    }
+
+    public static IServiceCollection AddPasswordServices(this IServiceCollection services)
+    {
+        services.AddSingleton<IPasswordHashingService, PasswordHashingService>();
         return services;
     }
 }

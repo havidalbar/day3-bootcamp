@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.4.0" />
+      <PackageReference Include="CoreEx.AutoMapper" Version="3.24.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +22,11 @@
       <Folder Include="Features\Queries\PutTableSpecifications\" />
       <Folder Include="Features\Queries\DeleteTableSpecifications\" />
       <Folder Include="Features\Queries\PostListSpecifications\" />
+      <Folder Include="Features\Queries\Authentications\" />
+      <Folder Include="Features\Queries\PostUsers\" />
+      <Folder Include="Features\Queries\Authentications\RefreshToken\" />
+      <Folder Include="Features\Queries\Mappers\" />
+      <Folder Include="Features\Queries\PostRoles\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,5 +35,10 @@
       <None Remove="Features\Queries\PutTableSpecifications\" />
       <None Remove="Features\Queries\DeleteTableSpecifications\" />
       <None Remove="Features\Queries\PostListSpecifications\" />
+      <None Remove="Features\Queries\Authentications\" />
+      <None Remove="Features\Queries\PostUsers\" />
+      <None Remove="Features\Queries\Authentications\RefreshToken\" />
+      <None Remove="Features\Queries\Mappers\" />
+      <None Remove="Features\Queries\PostRoles\" />
     </ItemGroup>
 </Project>
