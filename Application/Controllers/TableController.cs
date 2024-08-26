@@ -47,7 +47,7 @@ public class TableController : BaseController
 
     [HttpPut("v1/table/specification/")]
     [Authorize(Roles = "USER,ADMIN")]
-    public async Task<IActionResult> ListTableSpecifications(PutTableSpecificationsQuery request)
+    public async Task<IActionResult> PutTableSpecifications(PutTableSpecificationsQuery request)
     {
         var response = await _mediator.Send(request);
         if (response is null)

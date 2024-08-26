@@ -2,8 +2,8 @@
 using Application.Authentication;
 using Core.Features.Queries.Authentications;
 using Core.Features.Queries.Authentications.RefreshToken;
+using Core.Features.Queries.GetListUsers;
 using Core.Features.Queries.PostRoles;
-using Core.Features.Queries.PostTableSpecifications;
 using Core.Features.Queries.PostUsers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -45,7 +45,6 @@ namespace Application.Controllers
         }
 
         [HttpPost("register")]
-        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> Create([FromBody] PostUsersQuery request, CancellationToken cancellation)
         {
             var response = await _mediator.Send(request, cancellation);
@@ -56,11 +55,18 @@ namespace Application.Controllers
         }
 
         [HttpPost("role")]
-        [Authorize(Roles = "ADMIN")]
         public async Task<PostRolesResponse> CreateRole(PostRolesQuery request)
         {
             var response = await _mediator.Send(request);
             return response;
+        }
+
+        [HttpGet("users")]
+        [Authorize(Roles = "ADMIN")]
+        public async Task<IActionResult> ListUsers(GetListUsersQuery request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
     }
 }

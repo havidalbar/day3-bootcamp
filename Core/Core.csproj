@@ -27,6 +27,7 @@
       <Folder Include="Features\Queries\Authentications\RefreshToken\" />
       <Folder Include="Features\Queries\Mappers\" />
       <Folder Include="Features\Queries\PostRoles\" />
+      <Folder Include="Features\Queries\GetListUsers\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -40,5 +41,6 @@
       <None Remove="Features\Queries\Authentications\RefreshToken\" />
       <None Remove="Features\Queries\Mappers\" />
       <None Remove="Features\Queries\PostRoles\" />
+      <None Remove="Features\Queries\GetListUsers\" />
     </ItemGroup>
 </Project>
